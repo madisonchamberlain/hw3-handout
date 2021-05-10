@@ -5,7 +5,8 @@ reach(SS, FS, []) :-
 
 /* check if reachable via next states generated via head and input tail */
 /* if it isnt, continue on the next items of current state */
-reach([SSH|SST], FS, [IH|IT]) :- 
+reach([SSH|SST], FS, I) :- 
+    I = [IH|IT],
     transition(SSH,IH,NS),    
     reach(NS,FS,IT);
     reach(SST,FS,I). 
